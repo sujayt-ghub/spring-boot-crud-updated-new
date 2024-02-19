@@ -120,6 +120,7 @@ kubectl apply -f db-deployment.yaml
 kubectl port-forward mysql-5b544b4797-hcbj9 <local-port>:<container-port>
 kubectl port-forward mysql-5b544b4797-hcbj9 3306:3306
 kubectl port-forward mysql-5b544b4797-hcbj9 3306:3306 &
+# mysql port forward references https://stackoverflow.com/questions/74420726/cant-connect-to-mysql-service-on-kuberenetes-through-workbench
 kubectl get svc
 sudo snap remove mysql-workbench-community
 sudo snap install mysql-workbench-community
