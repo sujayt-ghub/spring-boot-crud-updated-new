@@ -124,6 +124,7 @@ kubectl port-forward mysql-5b544b4797-hcbj9 3306:3306 &
 kubectl get svc
 sudo snap remove mysql-workbench-community
 sudo snap install mysql-workbench-community
+use javatechie; #run use database command to read database details
 kubectl get pods
 
 kubectl exec -it mysql-5b544b4797-hcbj9 /bin/bash
