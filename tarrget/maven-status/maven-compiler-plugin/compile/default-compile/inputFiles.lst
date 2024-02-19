@@ -1,0 +1,5 @@
+/home/sujay/Spring-boot-crud/src/main/java/com/arjuncodes/springbootcrud/SpringbootCrudApplication.java
+/home/sujay/Spring-boot-crud/src/main/java/com/arjuncodes/springbootcrud/controller/StudentController.java
+/home/sujay/Spring-boot-crud/src/main/java/com/arjuncodes/springbootcrud/model/Student.java
+/home/sujay/Spring-boot-crud/src/main/java/com/arjuncodes/springbootcrud/repository/StudentRepository.java
+/home/sujay/Spring-boot-crud/src/main/java/com/arjuncodes/springbootcrud/service/StudentService.java

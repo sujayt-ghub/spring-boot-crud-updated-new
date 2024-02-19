@@ -1,0 +1,5 @@
+com/arjuncodes/springbootcrud/repository/StudentRepository.class
+com/arjuncodes/springbootcrud/service/StudentService.class
+com/arjuncodes/springbootcrud/model/Student.class
+com/arjuncodes/springbootcrud/SpringbootCrudApplication.class
+com/arjuncodes/springbootcrud/controller/StudentController.class
