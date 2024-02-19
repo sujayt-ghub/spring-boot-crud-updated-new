@@ -151,7 +151,7 @@ sudo vim Dockerfile
 ls
 sudo vim Dockerfile
 check the openjdk version , may get issue or errors if build version does't matches
-
+#docker openjdk image references https://stackoverflow.com/questions/69525199/openjdk-java-17-docker-image
 docker build -t springboot-crud-k8s:1.0 .
 docker images
 ls
