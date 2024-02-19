@@ -89,3 +89,84 @@ to see list of student
 
 
 # spring-boot-crud-updated
+
+
+
+minikube start
+ls
+cd Spring-boot-crud/
+
+sudo bim db-deployment.yaml
+sudo vim db-deployment.yaml
+eval $(minikube docker-env)
+ls
+
+sudo snap install mysql-workbench-community
+src
+ls
+cd main/
+ls
+cd resources/
+ls
+sudo vim application.properties
+export DB_HOST=localhost
+export DB_NAME=javatechie
+export DB_USERNAME=root
+export DB_PASSWORD=root
+kubectl get pods
+kubectl apply -f db-deployment.yaml
+kubectl port-forward mysql-5b544b4797-hcbj9 <local-port>:<container-port>
+kubectl port-forward mysql-5b544b4797-hcbj9 3306:3306
+kubectl port-forward mysql-5b544b4797-hcbj9 3306:3306 &
+kubectl get svc
+sudo snap remove mysql-workbench-community
+sudo snap install mysql-workbench-community
+kubectl get pods
+
+kubectl exec -it mysql-5b544b4797-hcbj9 /bin/bash
+mysql -h mysql -u root -p
+  
+cd Spring-boot-crud
+rm -rf target
+mvn clean install
+cd target/  # check if jar file successfully created
+cd ..
+cat Dockerfile
+cd target/
+mv springboot-crud-0.0.1-SNAPSHOT.jar springboot-crud-k8s.jar # renaming jar file to match with name in Dockerfile
+
+# remove unwanted images 
+cd ..
+docker images
+docker rmi openjdk
+docker rmi openjdk:8
+docker rmi -f 115053965e86
+docker rmi -f 178031df919b
+docker images
+kubectl get pods
+ls
+sudo vim Dockerfile
+ls
+sudo vim Dockerfile
+check the openjdk version , may get issue or errors if build version does't matches
+
+docker build -t springboot-crud-k8s:1.0 .
+docker images
+ls
+cd target/
+ls
+java -jar springboot-crud-k8s.jar (manual run to check if working ?)
+cd ..
+ls
+sudo vim app-deployment.yaml
+kubectl apply -f app-deployment.yaml
+kubectl get pods
+kubectl get svc
+ls
+cd
+ls
+cd Postman/
+ls
+./Postman & # run posting to to add or get records for the app
+ls
+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
