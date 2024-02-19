@@ -5,6 +5,8 @@
 
 Youtube Channel Link : [Click here](https://www.youtube.com/channel/UCJyDMA1hY0gWrCylFD963DA)
 
+https://www.youtube.com/watch?v=pIPji3_rYPY link to deploy spring boot app in minikube k8s with database connection
+
 reference https://linux.how2shout.com/steps-to-install-openjdk-17-ubuntu-linux-such-as-22-04-or-20-04/
 
 Steps to Install Openjdk 17 ubuntu Linux such as 22.04 or 20.04
