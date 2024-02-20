@@ -16,6 +16,10 @@ pipeline {
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
+        sh 'export DB_HOST=localhost'
+        sh 'export DB_NAME=javatechie'
+        sh 'export DB_USERNAME=root'
+        sh 'export DB_PASSWORD=root'
         sh 'mvn clean package'
       }
     }
