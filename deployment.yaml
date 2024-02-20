@@ -16,17 +16,17 @@ spec:
         - name: springboot-crud-k8s
           images:
             - name: sujaysuj/springboot-crud-k8s
-              newTag: ""
+              newTag: "jenkins-testsrpingapp-3"
           ports:
             - containerPort: 8080
           env:
-            - name: DB_HOST
+            - name: DB"HOST
               value: mysql
-            - name: DB_NAME
+            - name: DB"NAME
               value: javatechie
-            - name: DB_USERNAME
+            - name: DB"USERNAME
               value: root
-            - name: DB_PASSWORD
+            - name: DB"PASSWORD
               value: root
 
 
