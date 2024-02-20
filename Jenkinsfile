@@ -61,12 +61,12 @@ pipeline {
                     BUILD_NUMBER2="$BUILD_NUMBER1"
                   
                
-                    sed -i "s+"newTag.*"+"newTag:PLUS_${BUILD_NUMBER2}_"+g" java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
-                    sed -i 's/_/"/g' java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
-                    sed -i 's/PLUS/ /g' java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
-                    git add java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
+                    sed -i "s+"newTag.*"+"newTag:PLUS_${BUILD_NUMBER2}_"+g" deployment.yaml
+                    sed -i 's/_/"/g' deployment.yaml
+                    sed -i 's/PLUS/ /g' deployment.yaml
+                    git add deployment.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/Jenkins-Zero-To-Hero.git
+                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-boot-crud-updated.git
                     git push origin HEAD:main
                     ##git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                     chmod -R 777 //var/lib/jenkins/workspace/
