@@ -18,6 +18,7 @@ pipeline {
         sh 'ls -ltr'
         // build the project and create a JAR file
         sh 'chmod -R 777 //var/lib/jenkins/workspace/*'
+        sh 'cd /var/lib/jenkins/workspace/springprojecttest/'
         //sh 'export DB_HOST=localhost'
         //sh 'export DB_NAME=javatechie'
         //sh 'export DB_USERNAME=root'
