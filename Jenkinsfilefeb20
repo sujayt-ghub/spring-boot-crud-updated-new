@@ -22,7 +22,7 @@ pipeline {
         sh 'export DB_NAME=javatechie'
         sh 'export DB_USERNAME=root'
         sh 'export DB_PASSWORD=root'
-        sh 'mvn clean package -e'
+        sh 'mvn clean package'
       }
     }
     /*stage('Static Code Analysis') {
