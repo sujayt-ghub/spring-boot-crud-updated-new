@@ -12,14 +12,14 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/sujayt-ghub/spring-boot-crud-updated.git'
       }
     }
-    /*stage('Build and Test') {
+    stage('Build and Test') {
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
         // sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
         sh 'mvn clean package'
       }
-    }*/
+    }
     /*stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://192.168.0.121:9000"
