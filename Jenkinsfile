@@ -57,11 +57,19 @@ pipeline {
                 sh '''
                     git config user.email "sujaysuj692@gmail.com"
                     git config user.name "sujayt-ghub"
-                    BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s+"sujaysuj/ultimate-cicd1.*"+"sujaysuj/ultimate-cicd1:${BUILD_NUMBER}"+g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-                    git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    BUILD_NUMBER1=${BUILD_TAG}
+                    BUILD_NUMBER2="$BUILD_NUMBER1"
+                  
+               
+                    sed -i "s+"newTag.*"+"newTag:PLUS_${BUILD_NUMBER2}_"+g" java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
+                    sed -i 's/_/"/g' java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
+                    sed -i 's/PLUS/ /g' java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
+                    git add java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/Jenkins-Zero-To-Hero.git
+                    git push origin HEAD:main
+                    ##git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                    chmod -R 777 //var/lib/jenkins/workspace/
                 '''
             }
         }
