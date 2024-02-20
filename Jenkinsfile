@@ -15,6 +15,12 @@ pipeline {
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
+        sh 'chmod -R 777 /var/lib/jenkins/workspace/*'
+        sh 'export DB_HOST=localhost'
+        sh 'export DB_NAME=javatechie'
+        sh 'export DB_USERNAME=root'
+        sh 'export DB_PASSWORD=root'
+        
         // build the project and create a JAR file
         // sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
         sh 'mvn clean install'
