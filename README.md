@@ -174,3 +174,96 @@ ls
 ./Postman & # run posting to to add or get records for the app
 ls
 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
+
+
+
+
+----------------------------
+
+feb 22 notes
+
+https://www.youtube.com/watch?v=RR_oMDp4kEc Docker Container for Node.Js Application with MySQL Database
+
+sudo snap install mysql-workbench-community to install mysql workbench in ubuntu
+
+https://www.youtube.com/watch?v=PAQvxqocb6A Docker spring boot MySQL example | Spring boot MySQL docker
+
+
+docker run -d -p 3306:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=javatechie mysql
+
+
+
+ docker run -p 8080:8080 --name app -e DB_HOST=localhost -e DB_NAME=javatechie -e DB_USERNAME=root -e DB_PASSWORD=root app
+
+https://www.youtube.com/watch?v=PAQvxqocb6A worked connection b/w docker srpingapp and mysqldb
+
+
+1026  docker network ls
+ 1027  docker network
+ 1028  docker network create spring-net
+ 1029  docker ps
+ 1030  docker network connect spring-net mysqldb
+ 1031  docker ps
+ 1032  docker ps -a
+ 1033  docker run -p 8080:8080 --name app --net spring-net -e DB_HOST=localhost -e DB_NAME=javatechie -e DB_USERNAME=root -e DB_PASSWORD=root app
+ 1034  ls
+ 1035  docker ps -a
+ 1036  docker rm -f app
+ 1037  docker ps -a
+ 1038  docker run -p 8080:8080 --name app --net spring-net -e DB_HOST=mysqldb -e DB_NAME=javatechie -e DB_USERNAME=root -e DB_PASSWORD=root app
+ 1039  history
+
+
+docker run -p 8080:8080 --name app --net spring-net app
+--------------------------------------------------------------------------
+feb 22
+
+issue with mvn clean package 
+run below commands , prior check mysql container running
+export DB_HOST=localhost
+export DB_NAME=javatechie
+export DB_USERNAME=root
+export DB_PASSWORD=root
+mvn clean package
+echo $DB_HOST
+
+create package manual running below command
+mvn clean package or mvn clean install or mvn -B -DskipTests clean package
+
+cat Dockerfile  1
+FROM openjdk:17-oracle
+ENV DB_HOST=mysqldb
+ENV DB_NAME=javatechie
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=root
+EXPOSE 8080
+ADD target/springboot*.jar springboot-crud-k8s.jar
+ENTRYPOINT ["java","-jar","/springboot-crud-k8s.jar"]
+
+edited
+cat Dockerfile 2
+FROM openjdk:17-oracle
+EXPOSE 8080
+ADD target/springboot*.jar springboot-crud-k8s.jar
+ENTRYPOINT ["java","-jar","/springboot-crud-k8s.jar"]
+
+
+
+run below command from the project folder
+docker build -t app .
+docker ps -a
+docker run -p 8080:8080 --name app --net spring-net app
+docker run -p 8080:8080 --name app --net spring-net app or docker run -p 8080:8080 --name app --net spring-net -e DB_HOST=mysqldb -e DB_NAME=javatechie -e DB_USERNAME=root -e DB_PASSWORD=root app
+based on availability of env data in docker file either of above command to be run
+check if app started 
+
+docker exec -it ca64b306f6ac bash ## exec specific conatiner
+------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------
