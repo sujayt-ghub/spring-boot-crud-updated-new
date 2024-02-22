@@ -52,6 +52,15 @@ pipeline {
         }
       }
     }
+    stage('Build and Test') {
+      steps {
+        sh 'docker run -d -p 3306:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=javatechie mysql'
+        sh 'docker network connect spring-net mysqldb'
+        sh 'docker run -p 8080:8080 --name app --net spring-net app'
+      }
+    }
+
+     
     /*stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
