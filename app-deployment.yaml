@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot-crud-k8s
-          images:
+          image:sujaysuj/springboot-crud-k8s:jenkins-springprojecttest-43
             - name: sujaysuj/springboot-crud-k8s
               newTag: jenkins-springprojecttest-42
           ports:
