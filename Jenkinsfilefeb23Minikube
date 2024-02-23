@@ -74,6 +74,7 @@ pipeline {
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-boot-crud-updated.git
                     git push origin HEAD:main
+                    kubectl apply -f app-deployment.yaml
                     ##git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                     chmod -R 777 //var/lib/jenkins/workspace/
                     ##git add java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
