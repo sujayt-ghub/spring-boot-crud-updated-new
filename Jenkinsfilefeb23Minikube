@@ -67,9 +67,9 @@ pipeline {
                     BUILD_NUMBER2="$BUILD_NUMBER1"
                   
                
-                    sed -i "s+"image.*"+"image:sujaysuj/springboot-crud-k8s:${BUILD_TAG}"+g" app-deployment.yaml
+                    sed -i "s+"image.*"+"image:PLUSsujaysuj/springboot-crud-k8s:${BUILD_TAG}"+g" app-deployment.yaml
                     ##sed -i 's/_/"/g' app-deployment.yaml
-                    ##sed -i 's/PLUS/ /g' app-deployment.yaml
+                    sed -i 's/PLUS/ /g' app-deployment.yaml
                     git add app-deployment.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-boot-crud-updated.git
