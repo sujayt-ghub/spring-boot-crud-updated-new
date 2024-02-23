@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot-crud-k8s
-          image: sujaysuj/springboot-crud-k8s:jenkins-springprojecttest-50
+          image: sujaysuj/springboot-crud-k8s:jenkins-springprojecttest-51
           ports:
             - containerPort: 8080
           env:
