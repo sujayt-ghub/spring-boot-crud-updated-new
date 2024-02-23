@@ -16,7 +16,7 @@ spec:
         - name: springboot-crud-k8s
           images:
             - name: sujaysuj/springboot-crud-k8s
-              newTag: jenkins-springprojecttest-40
+              newTag: jenkins-springprojecttest-41
           ports:
             - containerPort: 8080
           env:
