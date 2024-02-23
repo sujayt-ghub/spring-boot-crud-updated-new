@@ -20,13 +20,13 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: DB"HOST
+            - name: DB_HOST
               value: mysql
-            - name: DB"NAME
+            - name: DB_NAME
               value: javatechie
-            - name: DB"USERNAME
+            - name: DB_USERNAME
               value: root
-            - name: DB"PASSWORD
+            - name: DB_PASSWORD
               value: root
 
 
