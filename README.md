@@ -263,6 +263,181 @@ docker exec -it ca64b306f6ac bash ## exec specific conatiner
 
 
 
+FEB 27
+
+https://devopscube.com/run-docker-in-docker/ docker inside docker
+https://medium.com/@shivam77kushwah/docker-inside-docker-e0483c51cc2c docker inside docker
+https://kodekloud.com/blog/run-docker-in-docker-container/ docker inside docker
+
+method 1 docker inside docker - creating with own image
+
+sudo vim Dockerfile
+FROM ubuntu:latest
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
+
+
+docker build -t test-image .
+sudo chmod 666 /var/run/docker.sock
+
+docker run -v /var/run/docker.sock:/var/run/docker.sock -ti test-image:latest direct run
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock -ti test-image:latest run in detach mode
+
+docker run -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -ti test-image:latest 
+to execute with 8080 port
+docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -ti test-image:latest
+to execute with port 8080 in detach mode
+
+
+
+docker exec -it 6357c8d1c2e9 /bin/sh or docker exec -it 6357c8d1c2e9 bash
+
+----------------------------------
+
+method 2 docker inside docker - Using DinD
+
+Step 1: Create a container named dind-test with docker:dind image
+docker run --privileged -d --name dind-test docker:dind
+Step 2: Log in to the container using exec.
+docker exec -it dind-test /bin/sh
+
+
+
+-----------------------
+
+to use mysql container inside docker inside docker container
+java and maven installed to build jar app ,
+will get jdbc error if we try to build jar app without proper mysql set up 
+
+ls
+java --version
+apt update
+sudo apt install openjdk-17-jdk
+apt install sudo
+sudo apt install openjdk-17-jdk
+java -version
+apt install maven -y
+ls
+mkdir springboot
+cd springboot/
+git clone https://github.com/sujayt-ghub/spring-boot-crud-updated.git
+cd spring-boot-crud-updated/
+mvn clean package
+sudo apt update
+sudo apt install mysql-server -y
+sudo systemctl start mysql.service
+apt install systemctl
+sudo systemctl start mysql.service
+systemctl status mysql.service
+issue when installing mysql inside container, hence alternatively used docker mysql image
+docker images
+docker run -d -p 3306:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=javatechie mysql
+
+docker start 665e1c2dd8b9 start container
+docker ps
+ls
+mvn clean install
+export DB_HOST=192.168.0.121  # there was issue with localhost as hostname as am using docker mysql images, after replacing with host ip , issue resolved
+export DB_NAME=javatechie
+export DB_USERNAME=root
+export DB_PASSWORD=root
+
+rm -rf target/
+
+mvn clean install
+can able to  build jar file
+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
+
+
+
+-------------
+
+
+
+FROM ubuntu:latest
+
+ENV DB_HOST=192.168.0.121
+ENV DB_NAME=javatechie
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=root
+
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
+RUN apt install openjdk-17-jdk -y && apt install maven -y
+WORKDIR demo
+COPY . .
+RUN mvn clean install
+COPY --from=build target/*.jar demo.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "demo.jar"]
+
+---------------
+
+
+cat Dockerfile
+FROM ubuntu:latest
+
+ENV DB_HOST=192.168.0.121
+ENV DB_NAME=javatechie
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=root
+
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
+RUN apt install openjdk-17-jdk -y && apt install maven -y
+WORKDIR demo
+COPY . .
+RUN mvn clean install
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "./target/*.jar"]
+
+
+Successfully built 7a6d6612c41b
+Successfully tagged test-image:latest
+
+
+docker run -p 8080:8080 --name testapp -e DB_HOST=192.168.0.121 -e DB_NAME=javatechie -e DB_USERNAME=root -e DB_PASSWORD=root test-image:latest
+
+-------------------------
+
+cat Dockerfile
+FROM ubuntu:latest AS build
+
+ENV DB_HOST=192.168.0.121
+ENV DB_NAME=javatechie
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=root
+
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
+RUN apt install openjdk-17-jdk -y && apt install maven -y
+COPY . .
+RUN mvn clean install
+
+FROM openjdk:17-oracle
+WORKDIR demo
+EXPOSE 8080
+COPY --from=build target/*.jar demo.jar
+ENTRYPOINT ["java", "-jar", "demo.jar"]
+
+success complete
+
+docker run -p 8080:8080 --name testapp -e DB_HOST=192.168.0.121 -e DB_NAME=javatechie -e DB_USERNAME=root -e DB_PASSWORD=root test-image:latest
+
+
+
 
 
 
