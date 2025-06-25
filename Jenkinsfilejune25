@@ -55,8 +55,8 @@ pipeline {
      
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
-           GIT_USER_NAME = "sujayt-ghub"
+            GIT_REPO_NAME = "spring-boot-crud-updated-new"
+            GIT_USER_NAME = "sujayt-ghub"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
@@ -72,7 +72,7 @@ pipeline {
                     sed -i 's/PLUS/ /g' app-deployment.yaml
                     git add app-deployment.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-boot-crud-updated.git
+                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-boot-crud-updated-new.git
                     git push origin HEAD:main
                     chmod -R 777 //var/lib/jenkins/workspace/*
                     ##git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
