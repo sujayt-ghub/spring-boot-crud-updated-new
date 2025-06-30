@@ -15,15 +15,18 @@ pipeline {
     }
     stage('Build and Test') {
       steps {
-        sh 'ls -ltr'
-        // build the project and create a JAR file
-        sh 'chmod -R 777 //var/lib/jenkins/workspace/*'
-        sh 'export DB_HOST=localhost'
-        sh 'export DB_NAME=javatechie'
-        sh 'export DB_USERNAME=root'
-        sh 'export DB_PASSWORD=root'
-        sh 'mvn -B -DskipTests clean package'
-        //sh 'mvn clean package'
+        withMaven(globalMavenSettingsConfig: '', jdk: '', maven: 'mvn', mavenSettingsConfig: '', traceability: true) {
+
+         sh 'ls -ltr'
+         // build the project and create a JAR file
+         sh 'chmod -R 777 //var/lib/jenkins/workspace/*'
+         sh 'export DB_HOST=localhost'
+         sh 'export DB_NAME=javatechie'
+         sh 'export DB_USERNAME=root'
+         sh 'export DB_PASSWORD=root'
+         sh 'mvn -B -DskipTests clean package'
+         //sh 'mvn clean package'
+        }
       }
     }
     /*stage('Static Code Analysis') {
