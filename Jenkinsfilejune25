@@ -22,6 +22,7 @@ pipeline {
         sh 'export DB_NAME=javatechie'
         sh 'export DB_USERNAME=root'
         sh 'export DB_PASSWORD=root'
+        sh 'rm -r target'
         sh 'mvn -B -DskipTests clean package'
         //sh 'mvn clean package'
       }
