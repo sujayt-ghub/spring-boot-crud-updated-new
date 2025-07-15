@@ -6,6 +6,11 @@ pipeline {
     }
        
     stages {
+        stage('clean workspace') {
+            steps {
+             cleanWs()
+            }
+        }
         stage('Git Checkout-github') {
             steps {
              git branch: 'main', url: 'https://github.com/Aseemakram19/maven-app.git'
@@ -18,12 +23,12 @@ pipeline {
         }
         stage('Create a image') {
             steps {
-               sh 'docker build -t aseem1 .'
+               //sh 'docker build -t aseem1 .'
             }
         }
         stage('Docker Container app') {
             steps {
-               sh 'docker run -d -p 9000:8080 -t aseem1'
+               //sh 'docker run -d -p 9000:8080 -t aseem1'
             }
         }
     }
