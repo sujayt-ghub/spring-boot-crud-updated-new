@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Git Checkout-github') {
             steps {
-             git branch: 'main', url: 'https://github.com/Aseemakram19/maven-app.git'
+             git branch: 'main', url: 'https://github.com/sujayt-ghub/spring-boot-crud-updated-new.git'
             }
         }
         stage('Build') {
