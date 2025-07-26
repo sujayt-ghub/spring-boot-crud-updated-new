@@ -77,7 +77,7 @@ pipeline {
                     git add kustomization.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-app-july24.git
-                    git push origin HEAD:main
+                    git push origin HEAD:main --force
                     #chmod -R 777 //var/lib/jenkins/workspace/*
                     ##git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                     ##git add java-maven-sonar-argocd-helm-k8s/spring-boot-app/kustomization.yaml
