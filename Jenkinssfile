@@ -76,7 +76,7 @@ pipeline {
                     sed -i 's/PLUS/ /g' kustomization.yaml
                     git add kustomization.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/spring-app-july24.git
+                    git remote set-url origin https://sujayt-ghub:${GITHUB_TOKEN}@github.com/sujayt-ghub/CICD-spring-boot-crud-updated-new.git
                     git push origin HEAD:main --force
                     #chmod -R 777 //var/lib/jenkins/workspace/*
                     ##git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
