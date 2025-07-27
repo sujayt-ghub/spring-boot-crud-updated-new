@@ -73,8 +73,9 @@ pipeline {
                     BUILD_NUMBER2="$BUILD_NUMBER1"
                   
                
-                    sed -i "s+"newTag.*"+"newTag:PLUS${BUILD_TAG}"+g" kustomization.yaml
-                    ##sed -i 's/_/"/g' app-deployment.yaml
+                    ##sed -i "s+"newTag.*"+"newTag:PLUS${BUILD_TAG}"+g" kustomization.yaml
+                    sed -i "s+"newTag.*"+"newTag:PLUS_${BUILD_TAG}_"+g" kustomization.yaml
+                    sed -i 's/_/"/g' kustomization.yaml
                     sed -i 's/PLUS/ /g' kustomization.yaml
                     git add kustomization.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
