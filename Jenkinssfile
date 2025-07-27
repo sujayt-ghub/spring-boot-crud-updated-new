@@ -59,7 +59,7 @@ pipeline {
      
     stage('Update Deployment File') {
         environment {
-           GIT_REPO_NAME = "spring-app-july24"
+           GIT_REPO_NAME = "CICD-spring-boot-crud-updated-new"
            GIT_USER_NAME = "sujayt-ghub"
         }
         steps {
