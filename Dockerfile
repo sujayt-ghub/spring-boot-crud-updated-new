@@ -4,5 +4,6 @@ ENV DB_NAME=javatechie
 ENV DB_USERNAME=root
 ENV DB_PASSWORD=root
 EXPOSE 8080
-ADD target/*.jar springboot-crud-k8s.jar
+//ADD target/*.jar springboot-crud-k8s.jar
+ADD *.jar springboot-crud-k8s.jar
 ENTRYPOINT ["java","-jar","/springboot-crud-k8s.jar"]
