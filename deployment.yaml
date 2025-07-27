@@ -23,7 +23,7 @@ spec:
             - name: DB_HOST
               value: mysql
             - name: DB_NAME
-              value: mytest
+              value: javatechie
             - name: DB_USERNAME
               value: root
             - name: DB_PASSWORD
