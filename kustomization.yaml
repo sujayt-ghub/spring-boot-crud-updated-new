@@ -7,4 +7,4 @@ resources:
 
 images:
   - name: sujaysuj/springboot-crud-k8s
-    newTag: "jenkins-tets2-25"
+    newTag: "jenkins-tets2-26"
